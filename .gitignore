@@ -1,0 +1,84 @@
+# =========================
+# Python
+# =========================
+
+__pycache__/
+*.py[cod]
+
+venv/
+.venv/
+env/
+
+# Python environment files
+*.egg-info/
+
+
+# =========================
+# Node / React
+# =========================
+
+node_modules/
+dist/
+build/
+.vite/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# =========================
+# Environment / Secrets
+# =========================
+
+.env
+.env.*
+!.env.example
+
+
+# =========================
+# Generated audio
+# =========================
+
+backend/audio/*.wav
+backend/audio/*.mp3
+backend/audio/*.ogg
+
+
+# =========================
+# Downloaded ML / TTS models
+# =========================
+
+*.onnx
+*.onnx.json
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+
+# =========================
+# Python / ML cache
+# =========================
+
+.cache/
+.pytest_cache/
+
+# Hugging Face cache
+huggingface/
+transformers_cache/
+
+
+# =========================
+# IDE
+# =========================
+
+.vscode/
+.idea/
+
+# =========================
+# OS
+# =========================
+
+.DS_Store
+Thumbs.db

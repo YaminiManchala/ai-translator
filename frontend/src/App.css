@@ -1,0 +1,724 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background:
+    radial-gradient(circle at 10% 10%, #eef2ff 0%, transparent 30%),
+    radial-gradient(circle at 90% 90%, #e0f2fe 0%, transparent 30%),
+    #f7f8fc;
+
+  color: #171923;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.translator {
+  width: 100%;
+  max-width: 1050px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 28px;
+
+  padding: 38px;
+
+  box-shadow:
+    0 25px 70px rgba(31, 41, 55, 0.10),
+    0 5px 20px rgba(31, 41, 55, 0.05);
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+h1 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 34px;
+  font-weight: 750;
+  letter-spacing: -1px;
+
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #7c3aed,
+    #2563eb
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin: 9px 0 34px;
+
+  text-align: center;
+
+  color: #6b7280;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   LANGUAGE SELECTION
+========================================================= */
+
+.language-row {
+  display: grid;
+
+  grid-template-columns: 1fr 58px 1fr;
+
+  align-items: end;
+
+  gap: 18px;
+
+  margin-bottom: 24px;
+}
+
+.language-row > div {
+  min-width: 0;
+}
+
+label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #374151;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   LANGUAGE DROPDOWN
+========================================================= */
+
+.language-row select {
+  width: 100%;
+  height: 50px;
+
+  padding: 0 15px;
+
+  color: #1f2937 !important;
+  background: #ffffff !important;
+
+  border: 1px solid #e2e5eb;
+  border-radius: 13px;
+
+  font-size: 15px;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  -webkit-appearance: menulist;
+  appearance: auto;
+}
+
+.language-row select:hover {
+  border-color: #a5b4fc;
+}
+
+.language-row select:focus {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.10);
+}
+
+.language-row select option {
+  color: #1f2937 !important;
+  background: #ffffff !important;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   SWAP BUTTON
+========================================================= */
+
+.swap {
+  width: 50px;
+  height: 50px;
+
+  align-self: end;
+
+  border: 1px solid #e1e4ea;
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #4f46e5;
+
+  font-size: 23px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.swap:hover:not(:disabled) {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+
+  transform: rotate(180deg);
+
+  box-shadow:
+    0 5px 15px rgba(79, 70, 229, 0.12);
+}
+
+.swap:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   TRANSLATION AREA
+========================================================= */
+
+.translation-area {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   INPUT / OUTPUT CARDS
+========================================================= */
+
+.input-box,
+.output-box {
+  position: relative;
+
+  min-height: 300px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+
+  padding: 18px;
+
+  background: #ffffff;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-box:focus-within {
+  border-color: #a5b4fc;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.07);
+}
+
+.output-box {
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #fafaff 100%
+    );
+}
+
+
+/* =========================================================
+   INPUT HEADER
+========================================================= */
+
+.input-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+.input-label {
+  color: #374151;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+textarea {
+  width: 100%;
+  height: 210px;
+
+  padding: 5px 2px;
+
+  border: none;
+  outline: none;
+  resize: none;
+
+  background: transparent;
+
+  color: #111827;
+
+  font-size: 17px;
+  line-height: 1.65;
+
+  font-family: inherit;
+}
+
+textarea::placeholder {
+  color: #a1a1aa;
+}
+
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   CHARACTER COUNT
+========================================================= */
+
+.input-box > span {
+  position: absolute;
+
+  left: 20px;
+  bottom: 16px;
+
+  color: #9ca3af;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   MICROPHONE BUTTON
+========================================================= */
+
+.mic-button {
+  border: none;
+  border-radius: 10px;
+
+  padding: 8px 13px;
+
+  background: #f1f3f8;
+  color: #4f46e5;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.mic-button:hover {
+  background: #e8eaff;
+
+  transform: translateY(-1px);
+}
+
+.mic-button.listening {
+  background: #fee2e2;
+  color: #dc2626;
+
+  animation: pulseMic 1.5s infinite;
+}
+
+@keyframes pulseMic {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.25);
+  }
+
+  70% {
+    box-shadow: 0 0 0 9px rgba(220, 38, 38, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+
+/* =========================================================
+   TRANSLATED TEXT
+========================================================= */
+
+.translated-text {
+  min-height: 220px;
+
+  color: #111827;
+
+  font-size: 18px;
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+
+  word-break: break-word;
+}
+
+.output-box .translated-text:empty {
+  color: #a1a1aa;
+}
+
+
+/* =========================================================
+   LOADING TEXT
+========================================================= */
+
+.translated-text {
+  transition: opacity 0.2s ease;
+}
+
+
+/* =========================================================
+   TRANSLATE BUTTON
+========================================================= */
+
+.translate-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 15px 25px;
+
+  border: none;
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #6366f1
+    );
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(79, 70, 229, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.translate-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(79, 70, 229, 0.28);
+}
+
+.translate-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.translate-button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+.audio-section {
+  margin-top: 18px;
+}
+
+.play-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+
+  padding: 10px 16px;
+
+  background: #eef2ff;
+  color: #4338ca;
+
+  font-size: 14px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.play-button:hover {
+  background: #e0e7ff;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TTS MESSAGE
+========================================================= */
+
+.tts-message {
+  margin-top: 18px;
+
+  padding: 11px 13px;
+
+  border-radius: 10px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   SPEECH ERROR
+========================================================= */
+
+.speech-error {
+  position: absolute;
+
+  left: 18px;
+  right: 18px;
+  bottom: 40px;
+
+  padding: 8px 10px;
+
+  border-radius: 8px;
+
+  background: #fef2f2;
+
+  color: #dc2626;
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .app {
+    padding: 20px 12px;
+    align-items: flex-start;
+  }
+
+  .translator {
+    margin-top: 10px;
+
+    padding: 25px 18px;
+
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    margin-bottom: 25px;
+  }
+
+  .language-row {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .swap {
+    justify-self: center;
+
+    transform: rotate(90deg);
+  }
+
+  .swap:hover:not(:disabled) {
+    transform: rotate(270deg);
+  }
+
+  .translation-area {
+    grid-template-columns: 1fr;
+  }
+
+  .input-box,
+  .output-box {
+    min-height: 280px;
+  }
+
+  textarea {
+    height: 195px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+  .translator {
+    padding: 22px 14px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .input-box,
+  .output-box {
+    padding: 15px;
+  }
+
+  .mic-button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .translated-text {
+    font-size: 16px;
+  }
+}
+/* =========================================================
+   FULL PAGE CENTERING FIX
+========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+}
+
+.translator {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
