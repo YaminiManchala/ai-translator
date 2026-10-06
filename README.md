@@ -4,7 +4,7 @@
 
 AI Translator is an AI-powered web application that translates text between multiple Indian and global languages and provides audio output for supported languages.
 
-![AI Translator](./screenshot.png)
+![AI Translator](screenshot.png)
 
 The application provides a simple and clean interface where users can select the source and target languages, enter text, and receive the translated result along with audio output.
 
